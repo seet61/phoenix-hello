@@ -8,4 +8,8 @@ defmodule HelloWeb.HelloController do
   def show(conn, %{"messanger" => messanger}) do
     render(conn, :show, messanger: messanger)
   end
+
+  def show(conn, params) do
+    render(conn, :greet, params)
+  end
 end

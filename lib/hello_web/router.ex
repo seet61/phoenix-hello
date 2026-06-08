@@ -28,6 +28,10 @@ defmodule HelloWeb.Router do
   scope "/api", HelloWeb do
     pipe_through :api
     resources "/urls", UrlController, except: [:new, :edit]
+    get "/", HelloController, :show
+    get "/:name", HelloController, :show
+    post "/", HelloController, :show
+    post "/:name", HelloController, :show
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
