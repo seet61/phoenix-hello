@@ -6,7 +6,8 @@ defmodule HelloWeb.PromEx do
     [
       {
         PromEx.Plugins.Phoenix,
-        endpoint: HelloWeb.Endpoint, router: HelloWeb.Router
+        PromEx.Plugins.PhoenixLiveView,
+        endpoint: HelloWeb.Endpoint, router: HelloWeb.Router, event_prefix: [:endpoint, :router]
       }
     ]
   end
@@ -14,7 +15,8 @@ defmodule HelloWeb.PromEx do
   @impl true
   def dashboards do
     [
-      {:prom_ex, "phoenix.json"}
+      {:prom_ex, "phoenix.json"},
+      {:prom_ex, "phoenix_live_view.json"}
     ]
   end
 end
