@@ -15,6 +15,8 @@ defmodule HelloWeb.Endpoint do
     websocket: [connect_info: [session: @session_options]],
     longpoll: [connect_info: [session: @session_options]]
 
+  plug PromEx.Plug, prom_ex_module: HelloWeb.PromEx, path: "/metrics"
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # When code reloading is disabled (e.g., in production),
