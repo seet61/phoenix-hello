@@ -20,14 +20,12 @@ defmodule HelloWeb.Router do
   end
 
   scope "/", HelloWeb do
-    pipe_through [:browser, :require_authenticated_user]
+    pipe_through :browser
 
     get "/", PageController, :home
     get "/hello", HelloController, :index
     get "/hello/:messanger", HelloController, :show
     # resources "/users", UserController, only: [:index, :show, :edit]
-
-    post "/users/update_password", UserSessionController, :update_password
   end
 
   # Other scopes may use custom stacks.

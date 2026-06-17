@@ -5,14 +5,16 @@ defmodule Hello.Blog.Post do
   schema "posts" do
     field :title, :string
     field :body, :string
+    field :user_id, :id
 
     timestamps(type: :utc_datetime)
   end
 
   @doc false
-  def changeset(post, attrs) do
+  def changeset(post, attrs, accounts_user_scope) do
     post
     |> cast(attrs, [:title, :body])
     |> validate_required([:title, :body])
+    |> put_change(:user_id, accounts_user_scope.user.id)
   end
 end

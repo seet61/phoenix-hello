@@ -7,8 +7,11 @@ defmodule HelloWeb.PostLiveTest do
   @create_attrs %{title: "some title", body: "some body"}
   @update_attrs %{title: "some updated title", body: "some updated body"}
   @invalid_attrs %{title: nil, body: nil}
-  defp create_post(_) do
-    post = post_fixture()
+
+  setup :register_and_log_in_user
+
+  defp create_post(%{scope: scope}) do
+    post = post_fixture(scope)
 
     %{post: post}
   end

@@ -9,7 +9,7 @@ import Config
 
 config :hello, :scopes,
   accounts_user: [
-    default: false,
+    default: true,
     module: Hello.Accounts.Scope,
     assign_key: :current_scope,
     access_path: [:user, :id],

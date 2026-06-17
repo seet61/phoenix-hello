@@ -18,4 +18,18 @@ defmodule Hello.BlogFixtures do
 
     post
   end
+
+  @doc """
+  Generate a post.
+  """
+  def post_fixture(scope, attrs \\ %{}) do
+    attrs =
+      Enum.into(attrs, %{
+        body: "some body",
+        title: "some title"
+      })
+
+    {:ok, post} = Hello.Blog.create_post(scope, attrs)
+    post
+  end
 end
